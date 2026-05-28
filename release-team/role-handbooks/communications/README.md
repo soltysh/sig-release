@@ -144,6 +144,9 @@ It helps to work closely with the Release Lead and use the respective SIG Slack 
 
 **Reach out in KEP issues to ask for feature blog opt-in.** Ask every KEP owner if they want to contribute a blog by reaching out in the KEP issue. Example messaging can be found [here](/release-team/role-handbooks/communications/templates/feature-blog-opt-in-message.md).
 
+> [!IMPORTANT]
+> **Proactively monitor `kubernetes/website` for blog PRs opened before outreach.** Feature authors sometimes open PRs on [kubernetes/website](https://github.com/kubernetes/website/pulls?q=is%3Apr+is%3Aopen+label%3Ablog) with the `blog` label independently, before the comms team begins its first outreach round. These PRs will not appear in the opt-in tracking sheet and can be missed entirely if the team only tracks blogs sourced from direct responses. Starting at Enhancements Freeze and continuing through blog freeze, regularly check for open PRs labeled `blog` on the website repository and cross-reference them against the feature blog tracking board. Any PRs not already tracked should be added, assigned to a comms team member, and contacted via the PR (not the KEP issue) from that point forward.
+
 **NOT EVERY KEP NEEDS A BLOG**. Work with the KEP owners, Release Lead, and SIG Docs Blog team (though #sig-docs-blog slack channel) to make sure all KEPs that opt-in really need a blog written. If a feature is small, or new in Alpha it may not be ready for a blog. You should also encourage important features to sign up to write a blog. Try to limit the number of blogs to 15 or fewer.
 
 **Make sure to proactively track PRs against the website repository**. There have been cases where KEP owners opted in to write a feature blog without notifying anyone in the KEP thread. Make sure to check if any new PRs are raised against the [k/website repository](https://github.com/kubernetes/website/pulls). 
@@ -337,6 +340,7 @@ This is an example of a typical release cycle and the order of how tasks will fl
         <ul>
         <li>Work with the enhancements lead to understand big-ticket items to be included in the release
         <li>Start monitoring the <code>Feature blog opt-in</code> sheet for new entries and use the <code>Status field</code> to assign and track status throughout the cycle
+        <li>Begin monitoring open PRs labeled <code>blog</code> on <a href="https://github.com/kubernetes/website/pulls?q=is%3Apr+is%3Aopen+label%3Ablog">kubernetes/website</a> for feature blog PRs that were opened before or outside of the formal opt-in process; add any untracked PRs to the tracking board
         <li> With Enhancement freeze in effect, create a GitHub discussion (<a href="https://github.com/kubernetes/sig-release/discussions/2047">example v1.26</a>) to start collecting the Release Highlights of the release, and reach out to all SIGs on and off over the next few weeks to ask for Release Highlights and explain why this is important to the community.
         <ul>
         </ul>
