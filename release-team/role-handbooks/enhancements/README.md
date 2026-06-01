@@ -392,7 +392,7 @@ To get the KEP stats for the status update, use the `KEPs by Stage` and `KEPs by
 
 The exception process (criteria, deadlines, and what enhancement owners need to submit) is outlined in [releases/EXCEPTIONS.md](/releases/EXCEPTIONS.md).
 
-Starting with the v1.36 release cycle, the Release Team tracks all exception requests on the [Release Tracking Board](#working-with-the-enhancement-tracking-board) using the `Exception Requests` view (e.g., [v1.36 Exception Requests view](https://github.com/orgs/kubernetes/projects/241/views/7)), instead of maintaining an `exceptions.yaml` file in the release directory.
+Starting with the v1.36 release cycle, the Release Team tracks all exception requests on the [Release Tracking Board](#working-with-the-release-tracking-board) using the `Exception Requests` view (e.g., [v1.36 Exception Requests view](https://github.com/orgs/kubernetes/projects/241/views/7)), instead of maintaining an `exceptions.yaml` file in the release directory.
 
 #### Fields on the Exception Requests view
 
@@ -509,13 +509,11 @@ If there is continued unresponsiveness on issues, remove them from the milestone
 
 - Make the shortlink functional:
   - First, make sure a `links.md` file exists in the current release directory in [k/sig-release](https://github.com/kubernetes/sig-release). If the file doesn't exist yet, sync with the Release Lead to create it.
-    - Example `links.md` from v1.36: https://github.com/kubernetes/sig-release/blob/master/releases/release-1.36/links.md
-  - Make a pull request to [k/sig-release](https://github.com/kubernetes/sig-release) to add the tracking board link to `links.md`, under the `#enhancements` anchor.
-    - Example PR from v1.36: https://github.com/kubernetes/sig-release/pull/2939
-  - Once this merges, the shortlink in the format `https://rel.k8s.io/vXYY/enhancements` should redirect to `#enhancements` on the `links.md` page, where the tracking board link can be found.
-    - Example from v1.36: https://rel.k8s.io/v136/enhancements redirects to https://github.com/kubernetes/sig-release/blob/master/releases/release-1.36/links.md#enhancements which contains the link to the board
-- Make sure the current release's README in [k/sig-release](https://github.com/kubernetes/sig-release) is updated with the shortlink. The Release Lead may do this as part of the PR to add the initial release README.
-  - Example from v1.36: [PR](https://github.com/kubernetes/sig-release/pull/2936) and [tracking board link](https://github.com/kubernetes/sig-release/blob/44eb151c746dbe0722495032389fb7c80e90fc2e/releases/release-1.36/README.md#L25)
+    - Example `links.md` from v1.37: https://github.com/kubernetes/sig-release/blob/master/releases/release-1.37/links.md
+  - Make a pull request to [k/sig-release](https://github.com/kubernetes/sig-release) to add the tracking board link to `links.md`, under the `#releasetracking` anchor.
+    - Example PR from v1.37: https://github.com/kubernetes/sig-release/pull/3025
+  - Once this merges, the shortlink in the format `https://rel.k8s.io/vXYY/releasetracking` should redirect to `#releasetracking` on the `links.md` page, where the tracking board link can be found.
+    - Example from v1.37: https://rel.k8s.io/v137/releasetracking redirects to https://github.com/kubernetes/sig-release/blob/master/releases/release-1.37/links.md#releasetracking which contains the link to the board
 - Make a pull request to [k/enhancements] to add the tracking board shortlink to the [README](https://github.com/kubernetes/enhancements#enhancements-tracking-board) and also update the [current release cycle](https://github.com/kubernetes/enhancements#current-release-cycle).
   - Example PR: https://github.com/kubernetes/enhancements/pull/5348
 

@@ -93,9 +93,9 @@ In the event that a subteam loses a shadow, we might ask the paired Lead Shadow 
       - links.md (source for `rel.k8s.io` short links)
       - release-notes-draft.md (consumed by the automated release process)
       - release_team.md
-- Short links are handled with `rel.k8s.io`. Each release directory should include a `links.md` file, such as the [v1.36 links.md](https://github.com/kubernetes/sig-release/blob/master/releases/release-1.36/links.md). Add one section per destination, using a stable HTML anchor ID in the heading; the `rel.k8s.io` service uses those IDs to create release-specific short links.
+- Short links are handled with `rel.k8s.io`. Each release directory should include a `links.md` file, such as the [v1.37 links.md](https://github.com/kubernetes/sig-release/blob/master/releases/release-1.37/links.md). Add one section per destination, using a stable HTML anchor ID in the heading; the `rel.k8s.io` service uses those IDs to create release-specific short links.
   - Use `https://rel.k8s.io/vXYY/<anchor>` for release-specific links, replacing `XYY` with the release version number minus dots. For example, v1.37 release meeting notes live at `https://rel.k8s.io/v137/releasemtg`.
-  - Common anchors include `releasemtg`, `enhancements`, `bugtriage`, `cisignal`, `retro`, and `contacts`.
+  - Common anchors include `releasemtg`, `releasetracking`, `bugtriage`, `cisignal`, `retro`, and `contacts`.
   - Keep shared links release-independent when appropriate, such as the release calendar at `https://rel.k8s.io/release-team-cal`.
   - Update both the release `README.md` and any team communications to use the `rel.k8s.io` links after the matching `links.md` entries exist.
 - Burndown meetings happen at 10AM Pacific Time, and you invite the Kubernetes Release calendar (`agst.us_b07popf7t4avmt4km7eq5tk5ao@group.calendar.google.com`) to them. Make sure to use UTC time for the meeting.
