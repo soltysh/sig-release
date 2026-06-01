@@ -1,4 +1,4 @@
-# Enhancements Tracking Board
+# Release Tracking Board
 
 ## Table of Contents
 
@@ -122,7 +122,7 @@ The easiest way to set up the new board is to make a copy of the board from the 
     - You can leave yourself and other leads for the current release there, but remove the shadows since they will change.
     - Leave the `PRR Assignees` alone, as those are managed by the Production Readiness Review team.
 3. Make the tracking board public
-4. Close the enhancements tracking board for the previous release
+4. Close the release tracking board for the previous release
 
 ### Option 2: Manual Steps (Old)
 
@@ -130,7 +130,7 @@ While it's generally easier / preferable to use [Option 1](#option-1-copying-pre
 
 - Navigate to https://github.com/orgs/kubernetes/projects/, click the `New Project` button, select the `Table` template (default), and click the `Create` button.
 - Update project settings by clicking `...` -> `Settings` from the project board
-  - Update the `Project name` to reflect the current release, e.g. **1.29 Enhancements Tracking**
+  - Update the `Project name` to reflect the current release, e.g. **v1.29 Release Tracking**
   - Set the project's `Visibility` to **Public**
 - Update project access by clicking `Manage Access` from the settings page
   - Set the `Base role` access to **Read**
@@ -161,7 +161,7 @@ While it's generally easier / preferable to use [Option 1](#option-1-copying-pre
 Important: Make sure you have completed the steps to [set up the new tracking board](#setting-up-new-tracking-board) above, before setting up automation.
 
 In order for KEPs to appear on the new tracking board, we need to open a pull request in [k/test-infra](https://github.com/kubernetes/test-infra) that enables the automatic syncing of issues with the `lead-opted-in` label to the new tracking board. The PR must contain the following changes:
-  - Update the [`GITHUB_PROJECT_BETA_NUMBER`](https://github.com/kubernetes/test-infra/blob/3de59f96b327c87c6d23a7308abc785268931707/config/jobs/kubernetes/sig-k8s-infra/trusted/sig-release-release-team-jobs/release-team-periodics.yaml#L20-L21) variable used by automation to identify the enhancements tracking board for the current release.
+  - Update the [`GITHUB_PROJECT_BETA_NUMBER`](https://github.com/kubernetes/test-infra/blob/5712cb4f73f67b7b9076ddd5f7f1c711c66c3127/config/jobs/kubernetes/sig-k8s-infra/trusted/sig-release-release-team-jobs/release-team-periodics.yaml#L31-L32) variable used by automation to identify the release tracking board for the current release.
   - Enable the test-infra job that syncs enhancements to the GitHub project board based on the `lead-opted-in` label. Update the name of the [periodic-sync-enhancements-github-project](https://github.com/kubernetes/test-infra/blob/master/config/jobs/kubernetes/sig-k8s-infra/trusted/sig-release-release-team-jobs/release-team-periodics.yaml#L2) cronjob with the version number of the release and enable the cronjob by commenting the impossible cron and uncommenting the `interval`.
 
 Previous PRs for reference:

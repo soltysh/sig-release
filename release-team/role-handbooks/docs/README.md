@@ -40,7 +40,7 @@ The Docs Lead is responsible for working with the Release Team to coordinate doc
 
 ### Responsibilities Overview
 
-* Identifying new Kubernetes features and enhancements ([Kubernetes Enhancement Proposals, also referred to as KEPs](https://www.kubernetes.dev/resources/keps/)) that require new documentation and tracking them using the Enhancements Tracking sheet created for the release (e.g. [Example Enhancements Tracking sheet from the Kubernetes 1.26 Release](https://github.com/orgs/kubernetes/projects/117/views/3))
+* Identifying new Kubernetes features and enhancements ([Kubernetes Enhancement Proposals, also referred to as KEPs](https://www.kubernetes.dev/resources/keps/)) that require documentation, and track them in the Release Tracking board for the release cycle (for example, [v1.37 Release Tracking board](https://github.com/orgs/kubernetes/projects/264)).
 * Creating a dev branch used by contributors to target documentation updates for the upcoming release
 * Generating, reviewing, and fixing Release Notes periodically throughout the release cycle
 * Offering guidance to contributors about how to contribute new feature and enhancements documentation and working with contributors to modify existing docs to accurately represent any upcoming changes 

@@ -242,9 +242,9 @@ Schedule a shadow onboarding meeting with the incoming shadows. The meeting will
 
 #### Enhancement Tracking Setup
 
-Early in the release cycle, the Enhancements Lead opens a GitHub Project, e.g., [the 1.26 Enhancement Tracking](https://github.com/orgs/kubernetes/projects/98/views/1). Later in the release, this project board will contain important information for the Docs team. If you don't have the access - please check that you are part of the `release-team-docs` Github group. 
+Early in the release cycle, the Enhancements Lead creates a GitHub Project for release tracking, for example the [v1.37 Release Tracking board](https://github.com/orgs/kubernetes/projects/264). Later in the cycle, this board contains important information for the Docs team. If you don't have the access - please check that you are part of the `release-team-docs` Github group.
 
-Check the Docs view [here](https://github.com/orgs/kubernetes/projects/98/views/6):
+Check the Docs view [here](https://github.com/orgs/kubernetes/projects/264/views/3):
 
 - Familiarize yourself with the Docs view of the tracker.
 - Which enhancements the team will be tracking for this release.
@@ -489,7 +489,7 @@ Before diving into tracking and reviews, establish a lightweight async communica
  
 Track PRs in the Release Tracking Github board shared by the Enhancements sub-team.
  
-The Enhancements Github board contains multiple views for the Enhancements, Docs, and the Comms subteam. The view of concern to the Docs sub-team is the Docs view. For example: Please refer to the [v1.36 Docs view - Enhancements Tracking](https://github.com/orgs/kubernetes/projects/241/views/3)
+The Release Tracking Github board contains multiple views for the Enhancements, Docs, and the Comms subteam. The view of concern to the Docs sub-team is the Docs view. For example: Please refer to the [v1.37 Release Tracking board](https://github.com/orgs/kubernetes/projects/264)
  
 >
 The Docs view contains the following items:
@@ -784,7 +784,7 @@ Also review each PR for:
 - Check that the PR has a docs final approval `/approve`.
 - Check that the milestone for the release has been added. If not, please use the `/milestone` command to apply
 - KEP reviewers and approvers can provide a technical review or delegate appropriately. KEP reviewers and approvers are usually listed in the [kep.yaml](https://github.com/kubernetes/enhancements/blob/master/keps/sig-architecture/1194-prod-readiness/kep.yaml).
-- If no LGTM, assign `sig/*` labels (as listed in the Release Tracking Board or the KEP issue) to help find technical reviewers.
+- If there is no LGTM, assign the relevant `sig/*` labels listed in the release tracking board to help find technical reviewers.
 
 
 #### Style Guide Checklist (High to Low Level)

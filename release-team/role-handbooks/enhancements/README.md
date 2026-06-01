@@ -582,7 +582,7 @@ At the beginning of the release cycle, we reach out to each SIG reminding them t
 - For opted-in issues periodically (a few times a week, increasing to daily closer to the deadlines):
   - Ensure issue is in the current milestone
   - Ensure issue has correct labels (`stage/xxx` is accurate, etc.)
-  - Ensure the `SIG`, `Stage`, and `Enhancement Type` Fields in the Enhancement Tracking Board are populated and accurate
+  - Ensure the `SIG`, `Stage`, and `Enhancement Type` Fields in the Release Tracking Board are populated and accurate
   - Evaluate if the enhancement satisfies all the [PRR Freeze requirements](/releases/release_phases.md#prr-freeze) for inclusion in the current release.
     - Comment on the issue using one of the [PRR Freeze communication templates](./communication-templates.md#prr-freeze-templates)
     - Update the issue `Status` to either `Tracked for PRR freeze` or `At risk for PRR freeze` on the tracking board
