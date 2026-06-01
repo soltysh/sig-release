@@ -18,7 +18,7 @@
   - [PRR Reviews](#prr-reviews)
   - [Enhancement KEP Status](#enhancement-kep-status)
   - [What Changes Require Tracking](#what-changes-require-tracking)
-  - [Working with the Enhancement Tracking Board](#working-with-the-enhancement-tracking-board)
+  - [Working with the Release Tracking Board](#working-with-the-release-tracking-board)
   - [Pre-Freeze Check: Catching untracked feature changes](#pre-freeze-check-catching-untracked-feature-changes)
   - [Understanding Test Freeze](#understanding-test-freeze)
   - [Release Team Meeting Updates](#release-team-meeting-updates)
@@ -107,7 +107,7 @@ The shadows should be selected keeping in mind that one of them may eventually b
 
 Ensure that the previous Enhancements Lead has given you access to:
 
-- The previous Kubernetes release enhancements tracking board.
+- The previous Kubernetes Release Tracking Board.
 
 Ensure that you and the shadows are part of the [Kubernetes org](https://github.com/kubernetes/community/blob/main/community-membership.md#member) and have been added to:
 
@@ -228,9 +228,9 @@ The team will collaborate with the KEP authors to ensure that any outstanding ex
 
 Please contact SIG Release on Slack if there is any uncertainty regarding whether the planned action meets the threshold for required tracking.
 
-### Working with the Enhancement Tracking Board
+### Working with the Release Tracking Board
 
-The Enhancements Tracking Board is used by the release-enhancements, release-docs, release-comms, and PRR teams.
+The Release Tracking Board is used by the release-enhancements, release-docs, release-comms, and PRR teams.
 Information in this document will be focused on how the Enhancements team should interact with the project board.
 
 #### Enhancements View
@@ -390,52 +390,82 @@ To get the KEP stats for the status update, use the `KEPs by Stage` and `KEPs by
 
 ### Exceptions
 
-Exception process is outlined [here](/releases/EXCEPTIONS.md)
+The exception process (criteria, deadlines, and what enhancement owners need to submit) is outlined in [releases/EXCEPTIONS.md](/releases/EXCEPTIONS.md).
 
-#### Exceptions.yaml File Format
+Starting with the v1.36 release cycle, the Release Team tracks all exception requests on the [Release Tracking Board](#working-with-the-enhancement-tracking-board) using the `Exception Requests` view (e.g., [v1.36 Exception Requests view](https://github.com/orgs/kubernetes/projects/241/views/7)), instead of maintaining an `exceptions.yaml` file in the release directory.
 
-When tracking exceptions for a release, create an `exceptions.yaml` file in the release directory (e.g., `releases/release-1.35/exceptions.yaml`). Here's the expected format:
+#### Fields on the Exception Requests view
 
-```yaml
-# Exception requests in v1.35
-# Google Group: https://groups.google.com/g/kubernetes-sig-release
-# Release Team Lead: [Name] ([@github-handle](https://github.com/github-handle))
+The `Exception Requests` view filters on `has:exception-request-type` and surfaces the following fields for each request:
 
-# Enhancements Freeze Exceptions requested in v1.35
+|                          Field | Description                                                                                                                  |
+|-------------------------------:|------------------------------------------------------------------------------------------------------------------------------|
+|                          Title | Title of (and link to) the KEP `Issue` in k/enhancements. For additional exceptions on the same KEP, this is a draft item.   |
+|                         Status | The KEP's current tracking status (e.g. `Tracked for PRR freeze`, `Removed from Milestone`).                                 |
+|                            SIG | Owning SIG.                                                                                                                  |
+|         Exception Request Type | The freeze the exception applies to: `PRR Freeze`, `Enhancements Freeze`, `Code and Test Freeze`, or `Docs Freeze`.          |
+|               Exception Status | `In Review` while the Release Team is evaluating the request, then `Approved` or `Rejected` once a decision has been made.   |
+|         Exception Request Link | Link to the Google Groups thread where the request was filed.                                                                |
+|  Exception Request Slack Thread | Link to the corresponding `#sig-release` Slack thread.                                                              |
+|          Exception Related PRs | Links to PRs associated with the exception (k/enhancements PRs for PRR/Enhancements Freeze, k/k PRs for Code/Test Freeze).   |
+|                Additional Time | The additional time requested by the enhancement owner, in calendar days.                                                    |
+|         Exception Request Date | Date (UTC) the exception was requested.                                                                                            |
+|        Exception Decision Date | Date (UTC) the Release Team approved or rejected the exception.                                                                    |
+|                Exception Liaison | The Release Team member (Enhancements Lead, Release Lead, or Release Lead shadow) assigned to follow up on the request.                                    |
+|         Exception Request Notes | Notes from the assigned liaison about the request (context, follow-up items, links, etc.) that may be useful to the KEP owner or other Release Team members. |
 
-enhancementFreeze:
+#### Adding a new exception request
 
-- name: "Feature Name"
-  issue: 1234
-  date_requested: 2025-01-15
-  date_reviewed: 2025-01-18
-  thread: https://groups.google.com/g/kubernetes-sig-release/c/thread-id
-  pull_requests:
-    - https://github.com/kubernetes/enhancements/pull/5678
-  status: "approved"  # or "rejected"
+When an exception request email comes in:
 
-# Code Freeze Exceptions requested in v1.35
+1. **Locate the KEP in the `Enhancements` view** by searching for the KEP number.
+    - If the KEP does not appear, it is likely being filtered out by the default view filter (e.g., `-status:Deferred,"Removed from Milestone" -enhancement-type:Docs`). Temporarily remove the relevant filter so the KEP becomes visible.
+2. **Set the `Exception Request Type`** field on the KEP to the appropriate freeze (`PRR Freeze`, `Enhancements Freeze`, `Code and Test Freeze`, or `Docs Freeze`).
+3. **Set the `Status` field on the `Enhancements` view to `Exception Pending`** to indicate the request is open and awaiting a Release Team decision.
+4. As soon as `Exception Request Type` has a value, the KEP automatically appears in the `Exception Requests` view. Switch to that view, set `Exception Status` to `In Review`, and fill in the remaining fields (`Exception Request Link`, `Exception Request Slack Thread`, `Exception Related PRs`, `Additional Time`, `Exception Request Date`, etc.).
+5. Assign the request to the Enhancements Lead, Release Lead or a Release Lead shadow via the `Exception Liaison` field for follow-up on the Slack thread.
 
-codeFreeze:
+##### Updating the KEP status through the exception lifecycle
 
-- name: "Another Feature Name"
-  issue: 5678
-  date_requested: 2025-02-15
-  date_reviewed: 2025-02-18
-  thread: https://groups.google.com/g/kubernetes-sig-release/c/thread-id
-  pull_requests:
-    - https://github.com/kubernetes/kubernetes/pull/123456
-  status: "approved"  # or "rejected"
-```
+As the request moves through the Release Team's decision and any follow-up work, keep both the `Exception Status` field (on the `Exception Requests` view) and the `Status` field (on the `Enhancements` view) in sync with reality:
 
-**Field Descriptions:**
-- `name`: Human-readable name of the enhancement
-- `issue`: Enhancement issue number in kubernetes/enhancements
-- `date_requested`: Date when the exception was requested (YYYY-MM-DD format)
-- `date_reviewed`: Date when the exception was formally approved/rejected by the release team (YYYY-MM-DD format)
-- `thread`: Link to the Google Groups discussion thread
-- `pull_requests`: List of relevant PRs (enhancements PRs for enhancement freeze, k/k PRs for code freeze)
-- `status`: Either "approved" or "rejected"
+- **While the Release Team is still evaluating the request**, leave `Exception Status` as `In Review` and the KEP `Status` as `Exception Pending`.
+- **Once the Release Team has decided on the request**, populate `Exception Decision Date` and update both fields:
+    - If **approved**: set `Exception Status` to `Approved` and the KEP `Status` to `Exception Approved`.
+    - If **rejected**: set `Exception Status` to `Rejected` and the KEP `Status` to `Removed from Milestone` (see [Label and milestone updates](#label-and-milestone-updates-when-removing-or-re-adding-a-kep) below).
+- **Once the deadline granted by the exception has passed**, re-evaluate the KEP and update its `Status` accordingly:
+    - If the KEP has satisfied all the requirements for the freeze, move it to the appropriate `Tracked for ...` status (e.g. `Tracked for PRR freeze`, `Tracked for enhancements freeze`, `Tracked for code freeze`, `Tracked for docs freeze`). See [Label and milestone updates](#label-and-milestone-updates-when-removing-or-re-adding-a-kep) below for the corresponding label changes.
+    - If the KEP missed the new deadline, set its `Status` to `Removed from Milestone`.
+
+##### Label and milestone updates when removing or re-adding a KEP
+
+Whenever the `Status` on the board transitions to or away from `Removed from Milestone`, also update the labels and milestone on the underlying k/enhancements issue so they stay consistent with the board.
+
+- **When removing a KEP from the milestone** (e.g. exception rejected, or new deadline missed), comment on the issue with:
+    ```
+    /remove-label tracked/yes
+    /label tracked/no
+    /milestone clear
+    ```
+- **When adding a KEP back to the milestone as `Tracked for ...`** (e.g. exception approved and requirements subsequently met), comment on the issue with:
+    ```
+    /label tracked/yes
+    /remove-label tracked/no
+    /milestone {milestone}
+    ```
+    Replace `{milestone}` with the current release milestone, e.g. `v1.37`.
+
+#### Handling multiple exceptions for the same KEP
+
+GitHub Projects does not support multi-select on the `Exception Request Type` field, so a single KEP issue can only represent one exception type at a time. If the same KEP requests exceptions for multiple freezes, the KEP will already appear in the `Exception Requests` view (with the original freeze type) and cannot be re-added from the same issue.
+
+To track an additional exception for a KEP that is already on the view:
+
+1. In the `Exception Requests` view, click the `+` (add item) row at the bottom of the table and type the KEP name or number.
+2. Select **Create a draft** from the dropdown.
+3. Fill in `Exception Request Type` and the remaining columns for the additional exception just as you would for a regular item.
+
+This keeps all exceptions for the KEP visible on the same view without requiring extra fields or separate views per freeze.
 
 ### Escalation / Handling Unresponsive Enhancement Owners
 
@@ -548,7 +578,7 @@ At the beginning of the release cycle, we reach out to each SIG reminding them t
 
 #### Before PRR Freeze
 
-- Monitor the Enhancements Tracking Board for new additions (as SIGs may opt-in KEPs for the release up until the deadline), and assign an `Enhancements Contact` to each issue.
+- Monitor the Release Tracking Board for new additions (as SIGs may opt-in KEPs for the release up until the deadline), and assign an `Enhancements Contact` to each issue.
 - For opted-in issues periodically (a few times a week, increasing to daily closer to the deadlines):
   - Ensure issue is in the current milestone
   - Ensure issue has correct labels (`stage/xxx` is accurate, etc.)
