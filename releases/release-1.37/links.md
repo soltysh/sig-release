@@ -12,11 +12,11 @@ Each header below (and their hidden ID tagging) creates the `rel.k8s.io/v137` na
 
 ## <a id="bugtriage"></a> Bug Triage
 
-_To be updated_
+[GitHub Bug Triage Project Board for v1.37](https://github.com/orgs/kubernetes/projects/80/views/30)
 
 ## <a id="cisignal"></a> CI Signal
 
-_To be updated_
+[GitHub CI Signal Project Board for v1.37 Issue Tracking](https://github.com/orgs/kubernetes/projects/68/views/42)
 
 ## <a id="retro"></a> Release Retrospective
 
